@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome file</title>
+    <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+    <div class="stackedit__html">
+        <h1 id="project-1">Project 1</h1>
+        <p>Web Programming with Python and JavaScript</p>
+        <h2 id="files-and-their-content">Files and Their content</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>File Name</th>
+                    <th>Purpose</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><a href="http://app.py">app.py</a></td>
+                    <td>Contains Flask application</td>
+                    <td>The <a href="http://app.py">app.py</a> has seperate routes into multiple sections with the help of comments. The main sections are: Helper Functions, Logged In Routes, Api and Goodreads Routes, Authentication Routes</td>
+                </tr>
+                <tr>
+                    <td><a href="http://import.py">import.py</a></td>
+                    <td>Contains python code to import csv to database</td>
+                    <td>Contains use of csv module and few lists and generator expressions. That helped to upload the data to database. The file also contains sqlalchemy module in order to execute database queries.</td>
+                </tr>
+                <tr>
+                    <td>books.csv</td>
+                    <td>books and author data</td>
+                    <td>The file was provided in the project 1 default template zip folder.</td>
+                </tr>
+                <tr>
+                    <td>Procfile</td>
+                    <td>Setup App for heroku</td>
+                    <td>The file helps to host the application on heroku.</td>
+                </tr>
+                <tr>
+                    <td>requirements.txt</td>
+                    <td>The file contains list of all dependency required to run the project. The file was generated using pip freeze &gt; requirements.txt</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>templates/</td>
+                    <td>Contains html template files</td>
+                    <td>The directory contains layout and other html files used to present the information to the user.</td>
+                </tr>
+            </tbody>
+        </table>
+        <h2 id="app.js-helper-functions">App.js Helper Functions</h2>
+        <p>I decided to distribute the code in functions to make it easy to organise. The code is still not properly organised, because it is all written in a single file.</p>
+        <p>Helper functions just execute the query and returns the data which is then used by the main application functions responsible for handling routes.</p>
+        <h2 id="app.js-logged-in-routes">App.js Logged In routes</h2>
+        <p>The routes that will serve the content to logged in users only.</p>
+        <p>There are two different tasks such are signup and login that are not implemented in this section.</p>
+        <h2 id="app.js-api-and-good-reads-routes">App.js Api and Good Reads Routes</h2>
+        <p>The section contains a function which just fetches information from goodreads api and returns it as json. This function is a helper function for api and other application routes.</p>
+        <p>The second function servers as an api route that is responsible for sending data to user.</p>
+        <h2 id="app.js-authentication-routes">App.js Authentication Routes</h2>
+        <p>The routes are login and signup, which allows a user to create a new account and login using the existing account.</p>
+        <p>For the simplicity the passwords are not encrypted before storing in the database.</p>
+        <h2 id="video-url">Video URL</h2>
+        <p>The video is available on youtube, explaining all the functionality of the application. My videos are usually longer than 5 to 10 minutes, because i don’t have editing skills. The video URL is <a href="https://youtu.be/-irF01kCQ8c">https://youtu.be/-irF01kCQ8c</a></p>
+        <h2 id="thanks">Thanks</h2>
+        <p>I have tried to complete all the requirements specified by the Project 1.</p>
+        <p>Happy Coding, and Thanks from Jayant Malik.</p>
+    </div>
+</body>
+
+</html>

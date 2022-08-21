@@ -1,0 +1,61 @@
+{% extends "layout-user.html" %} {% block title %} Homepage {% endblock %} {%
+block main %}
+<div class="container my-5">
+    <section class="jumbotron text-center">
+        <h2 class="jumbotron-heading">Search for Books</h2>
+        <form action="{{ url_for('index') }}" method="post">
+            <div class="form-inline mx-3">
+                <label>Search books by:</label>
+                <select name="search-criteria" class="form-control mx-3">
+                    <option value="isbn">ISBN</option>
+                    <option selected value="title">Title</option>
+                    <option value="author">Author</option>
+                </select>
+
+                <input type="text" required class="form-control w-50 m-3" name="query" placeholder="Enter Text to search for..." />
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block mx-3">
+                Search Now
+            </button>
+        </form>
+    </section>
+
+    {% if books == [] %}
+    <div>
+        <h2>No books found...</h2>
+    </div>
+    {% endif %}
+
+    {% if books %}
+    <section class="container my-4">
+        <h1 class="text-center my-2">Results found.</h1>
+        <p>Dear User, we do not display more than 20 records in our list.</p>
+        <ul class="list-group mx-auto">
+            <div class="row">
+
+                {% for book in books %}
+                <div class="col-6">
+                    <li class="list-group-item">
+                        <p>
+                            <strong>ISBN:</strong> {{book.isbn}}<br />
+                            <strong>Title:</strong> {{book.title}}<br />
+                            <strong>Author:</strong> {{book.author}}<br />
+                            <strong>Year:</strong> {{book.published}} <br />
+
+                            <a href="{{ url_for('details', id=book.id) }}" class="btn btn-success mt-2 btn-block">View Details</a>
+
+                        </p>
+                    </li>
+                </div>
+
+
+                {% endfor %}
+            </div>
+
+        </ul>
+</div>
+</section>
+{% endif %}
+</div>
+{% endblock %}
