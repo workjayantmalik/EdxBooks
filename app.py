@@ -5,10 +5,10 @@ from sqlalchemy.orm import scoped_session, sessionmaker
 from constants import SQLITE_DB_URI, SESSION_SECRET
 
 # create application and configure session.
-app = Flask(__name__)
+server = Flask(__name__)
 
 # configure application session
-app.secret_key = SESSION_SECRET
+server.secret_key = SESSION_SECRET
 
 # Set up database
 engine = create_engine(SQLITE_DB_URI)
@@ -153,7 +153,7 @@ def addReviewByBookId(book_id, rating, review):
 #       Logged in routes
 # ==============================
 
-@app.route("/", methods=['GET', 'POST'])
+@server.route("/", methods=['GET', 'POST'])
 def index():
     # Check if user is logged in
     if checkUserAuthStatus():
@@ -184,7 +184,7 @@ def index():
     return redirect('/login')
 
 
-@app.route('/book/details/<int:id>')
+@server.route('/book/details/<int:id>')
 def details(id):
     # Retrieve book via provided id
     book = getBookById(id)
@@ -199,7 +199,7 @@ def details(id):
     })
 
 
-@app.route('/book/reviews/add', methods=["POST"])
+@server.route('/book/reviews/add', methods=["POST"])
 def addReview():
     book_id = request.form.get('book-id')
     rating = request.form.get('rating')
@@ -215,12 +215,12 @@ def addReview():
     return render_template("error.html", error="Something went wrong. We could not add review at this time. Please try again.")
 
 
-@app.route('/instuctions')
+@server.route('/instuctions')
 def instructions():
     return render_template('instructions.html')
 
 
-@app.route('/api/<string:isbn>')
+@server.route('/api/<string:isbn>')
 def apiReview(isbn):
     # Get Book details by ISBN
     books = db.execute("""
@@ -257,7 +257,7 @@ def apiReview(isbn):
 #    Authenticate Routes
 # ===========================
 
-@app.route('/login', methods=['GET', 'POST'])
+@server.route('/login', methods=['GET', 'POST'])
 def login():
     """ Handles User Login """
 
@@ -289,13 +289,13 @@ def login():
             return redirect("/")
 
 
-@app.route("/logout")
+@server.route("/logout")
 def logout():
     session.pop('username', None)
     return redirect(url_for('login'))
 
 
-@app.route('/signup', methods=["GET", 'POST'])
+@server.route('/signup', methods=["GET", 'POST'])
 def signup():
     if (request.method == "GET"):
         # Check if user is logged in
@@ -341,3 +341,7 @@ def signup():
             return render_template("signup.html", error="User cannot be created. Some error occured.")
 
         return render_template("signup.html", error=None)
+
+
+if __name__ == '__main__':
+    server.run()
